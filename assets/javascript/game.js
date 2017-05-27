@@ -26,49 +26,73 @@ var cry3;
 var cry4;
 
 // FUNCTIONS
-/* 
 // generate random number
-var resetGame = function() {
-	// set values to ZERO
-	randomNumber = 0;
-	totalNumber = 0;
-	winCount = 0;
-	lossCount = 0;
-
-	//display values in HTML
-	$('#rando').html(randomNumber);
-	$('#wins').html(winCount);
-	$('#losses').html(lossCount);
-	$('#total').html(totalNumber);
-}
-*/
-
-//resetGame();
 // sets the game board
 var letsPlay = function() {
-	// random number between 19 and 120
-	// 19 is the minimum number and 100 is the max 120, minus 20
+    // random number between 19 and 120
+    // 19 is the minimum number and 100 is the max 120, minus 20
 
-	randomNumber = Math.floor((Math.random() * 100) + 19);
-	cry1 = Math.floor((Math.random() * 12) + 1);
-	cry2 = Math.floor((Math.random() * 12) + 1);
-	cry3 = Math.floor((Math.random() * 12) + 1);
-	cry4 = Math.floor((Math.random() * 12) + 1);
-	totalNumber = 0;
+    randomNumber = Math.floor((Math.random() * 100) + 19);
+    cry1 = Math.floor((Math.random() * 12) + 1);
+    cry2 = Math.floor((Math.random() * 12) + 1);
+    cry3 = Math.floor((Math.random() * 12) + 1);
+    cry4 = Math.floor((Math.random() * 12) + 1);
+    totalNumber = 0;
 
-	$('#rand-id').html(randomNumber);
-	$('#wins').html(winCount);
-	$('#losses').html(lossCount);
-	$('#total').html(totalNumber);
+    $('#rand-id').html(randomNumber);
+    $('#wins').html(winCount);
+    $('#losses').html(lossCount);
+    $('#total').html(totalNumber);
 
-	//testing
-	//console.log(randomNumber);
-	//console.log(winCount);
-	//console.log(lossCount);
-	//console.log(totalNumber);
-	//console.log(cry1);
-	//console.log(cry2);
-	//console.log(cry3);
-	//console.log(cry4);
+    //testing
+    //console.log(randomNumber);
+    //console.log(winCount);
+    //console.log(lossCount);
+    //console.log(totalNumber);
+    //console.log(cry1);
+    //console.log(cry2);
+    //console.log(cry3);
+    //console.log(cry4);
 }
-letsPlay();
+
+// check the value of the total number vs the random number
+var scoreCheck = function() {
+	if (totalNumber === randomNumber) {
+		alert("MATCH! Nice job! One dub for you!")
+		winCount++;
+		letsPlay();
+	}
+	else if (totalNumber > randomNumber) {
+		alert("You went over! Here take this L.");
+		lossCount++;
+		letsPlay();
+	}
+}
+// hmmmmm DRYYYY 
+$(document).ready(function() {
+	letsPlay();
+    $('#red').click(function() {
+        totalNumber += cry1;
+        $('#total').html(totalNumber);
+        //console.log(cry1);
+        scoreCheck();
+    })
+    $('#blue').click(function() {
+        totalNumber += cry2;
+        $('#total').html(totalNumber);
+        //console.log(cry2);
+        scoreCheck();
+    })
+    $('#yellow').click(function() {
+        totalNumber += cry3;
+        $('#total').html(totalNumber);
+        //console.log(cry3);
+        scoreCheck();
+    })
+    $('#green').click(function() {
+        totalNumber += cry4;
+        $('#total').html(totalNumber);
+        //console.log(cry4);
+        scoreCheck();
+    })
+});
