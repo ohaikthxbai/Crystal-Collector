@@ -56,7 +56,7 @@ var letsPlay = function() {
 	cry4 = Math.floor((Math.random() * 12) + 1);
 	totalNumber = 0;
 
-	$('#rando').html(randomNumber);
+	$('#rand-id').html(randomNumber);
 	$('#wins').html(winCount);
 	$('#losses').html(lossCount);
 	$('#total').html(totalNumber);
